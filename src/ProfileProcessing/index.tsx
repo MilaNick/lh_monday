@@ -1,3 +1,4 @@
+import parsePhoneNumber from 'libphonenumber-js';
 import { TMapItem, TMondayColumn } from '../App';
 import { getQueryCreateProfile, getQueryProfile, getQueryUpdateProfile } from '../queries';
 import { fetchMonday } from '../utils';
@@ -26,12 +27,15 @@ function ProfileProcessing(props: Readonly<IProps>) {
     }
 
     async function processProfile(profileLh: any) {
-        console.log('profileLh', profileLh)
         const originProfileMonday = await fetchProfilesMonday(profileLh);
-        console.log('originProfileMonday', originProfileMonday)
         if (!originProfileMonday) {
             const profileM = map.filter(m => m.lh !== null && m.monday !== null).reduce((acc: any, item: any) => {
-                const field = optionsMonday.find((list: any) => list.id === item.monday);
+                const field = optionsMonday.find((list: any) => list.id === item.monday)!;
+                if (field.id === 'phone') {
+                    const phoneNumber = parsePhoneNumber(profileLh[item.lh])
+                    // @ts-ignore
+                    profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': phoneNumber.country};
+                }
                 // @ts-ignore
                 const value = convertValueForMonday(profileLh[item.lh], field.type);
                 return {...acc, [item.monday]: value};
@@ -62,8 +66,10 @@ function ProfileProcessing(props: Readonly<IProps>) {
         }
     }
 
+
     function convertValueForMonday(value: string, type: string) {
         //TODO 'date', 'multiple-person'
+
         switch (type) {
             case 'date':
                 return; // todo:реализовать дату
@@ -73,8 +79,9 @@ function ProfileProcessing(props: Readonly<IProps>) {
                 return {'url': value, 'text': value};
             case 'multiple-person':
                 return;
-            // case 'phone':
-            //     return {'phone' : value, 'countryShortName': 'RU'};
+            case 'phone':
+                // @ts-ignore
+                return {'phone' : value.phone, 'countryShortName': value.countryShortName};
             default:
                 return value;
         }
