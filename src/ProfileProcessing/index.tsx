@@ -31,12 +31,14 @@ function ProfileProcessing(props: Readonly<IProps>) {
         if (!originProfileMonday) {
             const profileM = map.filter(m => m.lh !== null && m.monday !== null).reduce((acc: any, item: any) => {
                 const field = optionsMonday.find((list: any) => list.id === item.monday)!;
-                if (field.id === 'phone') {
-                    const phoneNumber = parsePhoneNumber(profileLh[item.lh])
-                    // @ts-ignore
-                    profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': phoneNumber.country};
+                if (field.id === 'phone' && profileLh[item.lh]) {
+                    const phoneNumber = parsePhoneNumber(profileLh[item.lh])!;
+                    if(phoneNumber?.isValid()) {
+                        profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': phoneNumber.country};
+                    } else {
+                        profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': null};
+                    }
                 }
-                // @ts-ignore
                 const value = convertValueForMonday(profileLh[item.lh], field.type);
                 return {...acc, [item.monday]: value};
             }, {})
