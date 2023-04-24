@@ -10,7 +10,7 @@ import { fetchMonday, creatingColumnDataByColumnLh } from '../utils';
 import './index.css'
 
 export const someProfileLh_1 = {
-    "full_name": "Kuzmin Vladimir ",
+    "full_name": "Vladimir Kuzmin",
     "first_name": "Vladimir",
     "last_name": "Kuzmin",
     "member_id": "+5711111111",
@@ -49,26 +49,6 @@ export const someProfileLh_2 = {
     "website_1": "https://newportfolio-delta.vercel.app/",
     "followers": "148",
 }
-// export const someProfileLh_3 = {
-//     "full_name": "Maxi Priest",
-//     "first_name": "Maxi",
-//     "last_name": "Priest",
-//     "member_id": null,
-//     "email": "zolotova@gmail.com",
-//     "phone": "+18547220499",
-//     "current_company": "Mix 6",
-//     "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
-//     "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
-//     "location_name": "Сербия",
-//     "address": "Сербия",
-//     "organization_url_3": "https://www.linkedin.com/company/1598538/",
-//     "organization_title_3": "Javascript Developer ",
-//     "education_1": "tehnicka skola",
-//     "education_start_1": "2011",
-//     "education_end_1": "2015",
-//     "website_1": "https://newportfolio-delta.vercel.app/",
-//     "followers": "148",
-// }
 export const someProfileLh_3 = {
     "full_name": "Priest",
     "first_name": "Maxi",
@@ -89,6 +69,7 @@ export const someProfileLh_3 = {
     "website_1": "https://newportfolio-delta.vercel.app/",
     "followers": "148",
 }
+
 export const optionsLh = [
     {id: 'full_name', title: 'Full Name'},
     {id: 'first_name', title: 'First name'},
@@ -110,7 +91,7 @@ export const optionsLh = [
     {id: 'followers', title: 'Followers'},
 ];
 
-const queue = [someProfileLh_1, someProfileLh_2, someProfileLh_3,]
+const queue = [someProfileLh_1, someProfileLh_2, someProfileLh_3]
 
 interface IProps {
     auth: string

@@ -31,15 +31,7 @@ function ProfileProcessing(props: Readonly<IProps>) {
         if (!originProfileMonday) {
             const profileM = map.filter(m => m.lh !== null && m.monday !== null).reduce((acc: any, item: any) => {
                 const field = optionsMonday.find((list: any) => list.id === item.monday)!;
-                if (field.id === 'phone' && profileLh[item.lh]) {
-                    const phoneNumber = parsePhoneNumber(profileLh[item.lh])!;
-                    if(phoneNumber?.isValid()) {
-                        profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': phoneNumber.country};
-                    } else {
-                        profileLh[item.lh] = {'phone' : profileLh[item.lh], 'countryShortName': null};
-                    }
-                }
-                const value = convertValueForMonday(profileLh[item.lh], field.type);
+                const value = convertValueForMonday(profileLh[item.lh], field.type); // '+79064289270'
                 return {...acc, [item.monday]: value};
             }, {})
             await createProfile(profileM);
@@ -82,8 +74,9 @@ function ProfileProcessing(props: Readonly<IProps>) {
             case 'multiple-person':
                 return;
             case 'phone':
-                // @ts-ignore
-                return {'phone' : value.phone, 'countryShortName': value.countryShortName};
+                const phoneNumber = value ? parsePhoneNumber(value) : null;
+                const countryShortName = phoneNumber?.isValid() ? phoneNumber.country : null;
+                return {'phone': value, 'countryShortName': countryShortName};
             default:
                 return value;
         }
