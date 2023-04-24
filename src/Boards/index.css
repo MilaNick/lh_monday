@@ -1,0 +1,10 @@
+.boards {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-boards {
+  width: 100%;
+  margin: 10px auto;
+}

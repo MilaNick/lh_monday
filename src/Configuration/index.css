@@ -1,0 +1,7 @@
+.configuration-wrap {
+  text-align: center;
+}
+.button-wrap .button {
+  width: calc(100% / 3);
+  background-color: white;
+}

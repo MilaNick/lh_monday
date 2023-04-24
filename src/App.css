@@ -1,0 +1,77 @@
+/*----------------------total----------------------*/
+body {
+  color: #181817;
+}
+a {
+  text-decoration: none;
+  color: #54bdc0;
+}
+
+/*---------------------- ----------------------*/
+.wrap{
+  width: 70vw;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.input {
+  padding: 5px 30px 5px 5px;
+  font-size: 20px;
+  border: 1px solid #54bdc0;
+  border-radius: 5px;
+}
+
+.input:focus-visible {
+  outline: 1px solid #2c7577;
+}
+
+button {
+  width: 100%;
+  border: none;
+}
+
+.button-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0 10px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  outline: 1px solid #54bdc0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  border: none;
+  background-color: #eac3c3;
+  outline: 1px solid #eac3c3;
+}
+.button:not(:disabled):hover {
+  background-color: #eceaea;
+  border: none;
+  outline: 1px solid transparent;
+}
+
+.button:not(:disabled):active {
+  background-color: #54bdc0;
+  color: white;
+}
+
+
+
