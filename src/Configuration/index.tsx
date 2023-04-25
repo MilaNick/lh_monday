@@ -10,85 +10,84 @@ import { fetchMonday, creatingColumnDataByColumnLh } from '../utils';
 import './index.css'
 
 export const someProfileLh_1 = {
-    "full_name": "Vladimir Kuzmin",
-    "first_name": "Vladimir",
-    "last_name": "Kuzmin",
-    "member_id": "+5711111111",
-    "email": "333222111@gmail.com",
-    "phone": "+18545890499",
-    "current_company": "Axis",
-    "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
-    "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
-    "location_name": "Russia",
-    "address": "Russia",
-    "organization_url_3": "https://www.linkedin.com/company/1598538/",
-    "organization_title_3": "Javascript Developer ",
-    "education_1": "tehnicka skola",
-    "education_start_1": "2011",
-    "education_end_1": "2015",
-    "website_1": "https://newportfolio-delta.vercel.app/",
-    "followers": "148",
-}
-export const someProfileLh_2 = {
-    "full_name": "Zolotova Lyudmila",
-    "first_name": "Mila",
-    "last_name": "Zolotova",
-    "member_id": "+79064289270",
-    "email": "5555555@gmail.com",
-    "phone": "+79064289270",
-    "current_company": "lh23",
-    "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
-    "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
-    "location_name": "Russia",
-    "address": "Russia",
-    "organization_url_3": "https://www.linkedin.com/company/1598538/",
-    "organization_title_3": "Javascript Developer ",
-    "education_1": "tehnicka skola",
-    "education_start_1": "2011",
-    "education_end_1": "2015",
-    "website_1": "https://newportfolio-delta.vercel.app/",
-    "followers": "148",
-}
-export const someProfileLh_3 = {
     "full_name": "Priest",
     "first_name": "Maxi",
     "last_name": "Priest",
-    "member_id": "021111111",
-    "email": "zolotova@gmail.com",
-    "phone": '+',
+    "member_id": "340781111",
+    "email": "maxi@gmail.com",
+    "phone_1": '+79062289270',
     "current_company": "Mix 6",
     "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
     "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
     "location_name": "Сербия",
     "address": "Сербия",
-    "organization_url_3": "https://www.linkedin.com/company/1598538/",
-    "organization_title_3": "Javascript Developer ",
     "education_1": "tehnicka skola",
-    "education_start_1": "2011",
-    "education_end_1": "2015",
+    "third_party_email_1": null,
+    "organization_title_3": "Javascript Developer ",
+    "organization_1": "Myorg",
+    "language_1": "En",
+    "website_1": "https://newportfolio-delta.vercel.app/",
+    "followers": "148",
+}
+export const someProfileLh_2 = {
+    "full_name": "Kuzmin Vlad",
+    "first_name": "Vlad",
+    "last_name": "Kuzmin",
+    "member_id": "426571119",
+    "email": "kuzmin@gmail.com",
+    "phone_1": '+13255496792',
+    "current_company": "Mylove",
+    "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
+    "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
+    "location_name": "Сербия",
+    "address": "Сербия",
+    "education_1": "tehnicka skola",
+    "third_party_email_1": null,
+    "organization_title_3": "Javascript Developer ",
+    "organization_1": "Myorg",
+    "language_1": "En",
+    "website_1": "https://newportfolio-delta.vercel.app/",
+    "followers": "148",
+}
+export const someProfileLh_3 = {
+    "full_name": "Laura Omani",
+    "first_name": "Laura",
+    "last_name": "Omani",
+    "member_id": "021111111",
+    "email": "omani@gmail.com",
+    "phone_1": '+2034228927',
+    "current_company": "Axis",
+    "profile_url": "https://www.linkedin.com/in/djordje-mikic-a7832a16a/",
+    "avatar": "https://media.licdn.com/dms/image/C4D03AQHhWZs3zL1GRQ/profile-displayphoto-shrink_800_800/0/1625773386958?e=1680134400&v=beta&t=p0PR0yzB-b3IfOCr7MIpXRTiaH89z1a_z6as15_a5dA",
+    "location_name": "Сербия",
+    "address": "Сербия",
+    "education_1": "tehnicka skola",
+    "third_party_email_1": null,
+    "organization_title_3": "Javascript Developer ",
+    "organization_1": "Myorg",
+    "language_1": "En",
     "website_1": "https://newportfolio-delta.vercel.app/",
     "followers": "148",
 }
 
 export const optionsLh = [
-    {id: 'full_name', title: 'Full Name'},
-    {id: 'first_name', title: 'First name'},
-    {id: 'last_name', title: 'Last name'},
-    {id: 'member_id', title: 'Linkedin id '},
-    {id: 'email', title: 'Email'},
-    {id: 'phone', title: 'Phone'},
-    {id: 'current_company', title: 'Current company'},
-    {id: 'profile_url', title: 'Linkedin profile url'},
-    {id: 'avatar', title: 'Link a avatar'},
-    {id: 'location_name', title: 'Location name'},
-    {id: 'address', title: 'Address'},
-    {id: 'organization_url_3', title: 'Link to the company'},
-    {id: 'organization_title_3', title: 'Company name'},
-    {id: 'education_1', title: 'Education'},
-    {id: 'education_start_1', title: 'Start of training'},
-    {id: 'education_end_1', title: 'End of training'},
-    {id: 'website_1', title: 'Website'},
-    {id: 'followers', title: 'Followers'},
+    {id: 'full_name'},
+    {id: 'first_name'},
+    {id: 'last_name'},
+    {id: 'member_id'},
+    {id: 'email'},
+    {id: 'phone', withIndex: true},
+    {id: 'current_company'},
+    {id: 'profile_url'},
+    {id: 'avatar'},
+    {id: 'location_name'},
+    {id: 'address'},
+    {id: 'education', withIndex: true},
+    {id: 'third_party_email', withIndex: true},
+    {id: 'organization', withIndex: true},
+    {id: 'language', withIndex: true},
+    {id: 'website', withIndex: true},
+    {id: 'followers'},
 ];
 
 const queue = [someProfileLh_1, someProfileLh_2, someProfileLh_3]
@@ -128,7 +127,7 @@ function Configuration(props: Readonly<IProps>) {
 
     const onResetClick = () => {
         setShownReset(true);
-    }
+    };
 
     const onSaveClick = async () => {
         const copiedMap = map.map((m) => ({ ...m }));
@@ -200,7 +199,15 @@ function Configuration(props: Readonly<IProps>) {
                                     if (type === 'lh' && rowMap.monday === 'create-column' && !(columnId in creatingColumnDataByColumnLh)) {
                                         rowMap.monday = null;
                                     }
+                                    if (type === 'lh') {
+                                        const selectedOption = optionsLh?.find(({ id }) => id === columnId);
+                                        rowMap.index = selectedOption?.withIndex ? 1 : undefined;
+                                    }
                                     rowMap[type] = columnId;
+                                    setMap([...map]);
+                                }}
+                                onIndexChange={(index: number) => {
+                                    rowMap.index = index;
                                     setMap([...map]);
                                 }}
                                 onOverwriteChange={(value: boolean) => {

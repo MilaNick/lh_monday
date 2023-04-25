@@ -5,6 +5,7 @@ import { AuthContext } from '../App';
 import './index.css';
 
 function Auth() {
+    // eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI0OTU3OTQzMiwidWlkIjo0MTkyNDMyMCwiaWFkIjoiMjAyMy0wNC0wN1QxODoyOTo0Mi40MzNaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTY0MjYxNTksInJnbiI6ImV1YzEifQ.krwkcp_M9u2eJAblbkSVo_3muPg3pssgUsG9yVlU298
     // @ts-ignore
     const { auth, setAuth } = useContext(AuthContext);
     useEffect(() => {

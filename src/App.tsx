@@ -8,7 +8,7 @@ import { creatingColumnDataByColumnLh, fetchMonday, findMappingColumnByLhId } fr
 
 import './App.css';
 
-export type TMapItem = { lh: string | null, monday: string | null, overwrite: boolean, identifier: boolean };
+export type TMapItem = { lh: string | null, index?: number, monday: string | null, overwrite: boolean, identifier: boolean };
 export type TMondayColumn = { id: string, title: string, type: 'date' | 'email' | 'link' | 'long-text' | 'multiple-person' | 'name' | 'numeric' | 'phone' | 'text' };
 export const AuthContext = createContext<{ auth: string | null, setAuth: (auth: string | null) => void } | null>(null);
 
@@ -17,7 +17,7 @@ function App() {
     const [boards, setBoards] = useState<any[]>([]);
     const [columnsMonday, setColumnsMonday] = useState<TMondayColumn[]>([]);
     const [boardId, setBoardId] = useState<string | null>(null);
-    const [map, setMap] = useState<TMapItem[] | null>(null)
+    const [map, setMap] = useState<TMapItem[] | null>(null);
 
     const loadingBoards = useRef(false);
 
@@ -61,7 +61,7 @@ function App() {
                 const filteredBoards: any[] = boards?.filter((board) => board.type === 'board');
                 setBoards(filteredBoards)
             } catch (error) {
-                console.log('error -->', error)
+                console.log('error -->', error);
             } finally {
                 loadingBoards.current = false;
             }
@@ -91,16 +91,36 @@ function App() {
                 overwrite: false,
                 identifier: true
             },
-            {lh: 'full_name', monday: findMappingColumnByLhId(columnsMonday, 'full_name') ?? null, overwrite: false, identifier: false},
-            {lh: 'email', monday: findMappingColumnByLhId(columnsMonday, 'email') ?? null, overwrite: false, identifier: false},
-            {lh: 'phone', monday: findMappingColumnByLhId(columnsMonday, 'phone') ?? null, overwrite: false, identifier: false},
+            {
+                lh: 'full_name',
+                monday: findMappingColumnByLhId(columnsMonday, 'full_name') ?? null,
+                overwrite: false,
+                identifier: false
+            },
+            {
+                lh: 'email',
+                monday: findMappingColumnByLhId(columnsMonday, 'email') ?? null,
+                overwrite: false,
+                identifier: false
+            },
+            {
+                lh: 'phone',
+                monday: findMappingColumnByLhId(columnsMonday, 'phone') ?? null,
+                overwrite: false,
+                identifier: false
+            },
             {
                 lh: 'current_company',
                 monday: findMappingColumnByLhId(columnsMonday, 'company') ?? null,
                 overwrite: false,
                 identifier: false
             },
-            {lh: null, monday: null, overwrite: false, identifier: false},
+            {
+                lh: null,
+                monday: null,
+                overwrite: false,
+                identifier: false
+            },
         ]
     }
 
@@ -120,35 +140,34 @@ function App() {
     }
 
     return (
-            <AuthContext.Provider value={{auth, setAuth}}>
-                <div className='wrap'>
-                    <Auth/>
-                    <Boards
-                        boards={boards}
+        <AuthContext.Provider value={{auth, setAuth}}>
+            <div className='wrap'>
+                <Auth/>
+                <Boards
+                    boards={boards}
+                    boardId={boardId}
+                    setBoardId={setBoardId}
+                />
+                {boardId && map && auth && (
+                    <Configuration
+                        auth={auth}
                         boardId={boardId}
-                        setBoardId={setBoardId}
+                        map={map}
+                        optionsMonday={columnsMonday}
+                        refetchColumnsMonday={refetchColumnsMonday}
+                        resetMap={resetMap}
+                        undoChanges={setInitialMap}
+                        saveMapToLS={saveMapToLS}
+                        setMap={setMap}
                     />
-                    {boardId && map && auth && (
-                        <Configuration
-                            auth={auth}
-                            boardId={boardId}
-                            map={map}
-                            optionsMonday={columnsMonday}
-                            refetchColumnsMonday={refetchColumnsMonday}
-                            resetMap={resetMap}
-                            undoChanges={setInitialMap}
-                            saveMapToLS={saveMapToLS}
-                            setMap={setMap}
-                        />
-                    )}
-                </div>
+                )}
+            </div>
 
-            </AuthContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
 export default App;
-
 
 function readMapByBoardIdFromLS(id: string) {
     const mapsFromLS = readMapsFromLS();

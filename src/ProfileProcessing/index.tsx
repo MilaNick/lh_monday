@@ -31,8 +31,12 @@ function ProfileProcessing(props: Readonly<IProps>) {
         if (!originProfileMonday) {
             const profileM = map.filter(m => m.lh !== null && m.monday !== null).reduce((acc: any, item: any) => {
                 const field = optionsMonday.find((list: any) => list.id === item.monday)!;
-                const value = convertValueForMonday(profileLh[item.lh], field.type); // '+79064289270'
-                return {...acc, [item.monday]: value};
+                const keyLh = item.index ? `${item.lh}_${item.index}` : item.lh;
+                const value = convertValueForMonday(profileLh[keyLh], field.type);
+                if (!value) {
+                    return acc;
+                }
+                return { ...acc, [item.monday]: value };
             }, {})
             await createProfile(profileM);
         } else {
@@ -42,7 +46,7 @@ function ProfileProcessing(props: Readonly<IProps>) {
                 const dataOfColumn: { id: string, text: string } = data.find(d => d.id === rowMap.monday);
                 const valueMonday = dataOfColumn?.text;
                 const keyMonday = rowMap.monday;
-                const keyLh = rowMap.lh as null | keyof typeof profileLh;
+                const keyLh = rowMap.index ? `${rowMap.lh}_${rowMap.index}` : rowMap.lh;
                 if (!columnMonday || !keyMonday || !keyLh) {
                     return acc;
                 }
@@ -63,7 +67,6 @@ function ProfileProcessing(props: Readonly<IProps>) {
 
     function convertValueForMonday(value: string, type: string) {
         //TODO 'date', 'multiple-person'
-
         switch (type) {
             case 'date':
                 return; // todo:реализовать дату

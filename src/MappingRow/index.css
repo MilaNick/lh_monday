@@ -1,4 +1,4 @@
-/*----------------------selects----------------------*/
+/*------------------selects-&&-index-------------------*/
 .mapping-fields {
   display: grid;
   grid-template-columns: repeat(2, 30%) repeat(4, 10%);
@@ -19,11 +19,35 @@
   font-size: 14px;
   margin-bottom: 6px;
   color: #a14c4c;
-  position: absolute; /* todo:anne */
+  position: absolute;
   top: -20px;
 }
 
+.wrap-input {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.index {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 30px;
+  height: 29px;
+  text-align: center;
+  border: 1px solid #e1e7e7;
+  border-radius: 0.25em;
+  cursor: pointer;
+  z-index: 15;
+}
+.index:active, .index:focus-visible {
+  border: none;
+  outline: none;
+}
 /*----------------------checkbox overwrite----------------------*/
+
 .overwrite {
   display: flex;
   justify-content: space-around;
@@ -111,3 +135,4 @@
 .mapping-fields__input--error {
   outline: 1px solid red !important;
 }
+

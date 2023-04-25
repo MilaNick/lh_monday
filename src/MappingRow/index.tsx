@@ -5,17 +5,22 @@ import SelectWithAutoComplete from '../SelectWithAutoComplete';
 import { creatingColumnDataByColumnLh, findMappingColumnByLhId, notFalsy } from '../utils';
 
 import './index.css';
+
 interface IProps {
-    lhOptions?: any
+    lhOptions?: {
+        id: string,
+        withIndex?: boolean
+    }[]
     map: TMapItem
     mondayOptions: TMondayColumn[]
-    canAdd?: boolean
-    canDelete?: boolean
-    onSelect?: any
-    onOverwriteChange?: any
-    isIdentifier?: any
-    onAddNewMap?: any
-    onDeleteMap?: any
+    canAdd: boolean
+    canDelete: boolean
+    onSelect: (type: 'lh' | 'monday', columnId: string) => void
+    onOverwriteChange: (value: boolean) => void
+    isIdentifier: (value: boolean) => void
+    onAddNewMap: () => void
+    onDeleteMap: () => void
+    onIndexChange: (index: number) => void
 }
 
 function MappingRow(props: Readonly<IProps>) {
@@ -30,11 +35,12 @@ function MappingRow(props: Readonly<IProps>) {
         isIdentifier,
         onAddNewMap,
         onDeleteMap,
+        onIndexChange,
     } = props;
 
     function mapLhOptions(lhOptions: any[] | undefined) {
         // @ts-ignore
-        return lhOptions.map(option => ({ label: option.title, value: option.id }))
+        return lhOptions.map(option => ({ label: option.id, value: option.id }))
     }
 
     const optionsMonday = useMemo(() => {
@@ -48,20 +54,38 @@ function MappingRow(props: Readonly<IProps>) {
                 value: 'create-column',
                 color: 'green' as const,
             },
-            ...mondayOptions.map(column => ({ label: column.title, value: column.id }))
+            ...mondayOptions.map(column => ({ label: column.id, value: column.id }))
 
         ].filter(notFalsy)
     }, [map.lh, mondayOptions]);
 
+    const selectedOption = lhOptions?.find(({ id }) => id === map.lh);
+
     return (
         <div className='mapping-fields'>
-            <SelectWithAutoComplete
-                className='mapping-fields__input'
-                placeholder='Match the fields from Linked helper'
-                options={mapLhOptions(lhOptions)}
-                value={map.lh ?? ''}
-                onSelect={value => onSelect('lh', value)}
-            />
+            <div className="wrap-input">
+                <SelectWithAutoComplete
+                    className='mapping-fields__input'
+                    placeholder='Match the fields from Linked helper'
+                    options={mapLhOptions(lhOptions)}
+                    value={map.lh ?? ''}
+                    onSelect={value => onSelect('lh', value)}
+                />
+                {selectedOption?.withIndex && <input
+                    onBlur={(e) => {
+                        if (e.target.value === '0' || e.target.value === '') {
+                            onIndexChange(1);
+                        }
+                    }}
+                    type="text"
+                    className="index"
+                    value={String(map.index || '')} onChange={e => {
+                    const valueNumber = Number(e.target.value);
+                    if (Number.isFinite(valueNumber)) {
+                        onIndexChange(valueNumber);
+                    }
+                }}/>}
+            </div>
             <SelectWithAutoComplete
                 className='mapping-fields__input'
                 placeholder='Match the fields from Monday'
